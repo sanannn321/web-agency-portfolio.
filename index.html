@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS DIGITAL | Data-Driven Growth Agency</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           1. RESET & VARIABLES
+           ========================================================================== */
+        :root {
+            --bg-white: #ffffff;
+            --bg-soft-gray: #f4f6f9;
+            --navy-blue: #0a192f;
+            --royal-blue: #0052cc;
+            --royal-blue-hover: #0040a8;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --font-main: 'Inter', sans-serif;
+            --transition: all 0.3s ease-in-out;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        /* ==========================================================================
+           2. TYPOGRAPHY & BUTTONS
+           ========================================================================== */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            color: var(--navy-blue);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--royal-blue);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.6rem;
+            font-family: var(--font-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--royal-blue);
+            color: var(--bg-white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--royal-blue-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 82, 204, 0.25);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--border-color);
+            color: var(--navy-blue);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--royal-blue);
+            color: var(--royal-blue);
+        }
+
+        /* ==========================================================================
+           3. NAVBAR
+           ========================================================================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--navy-blue);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--royal-blue);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--royal-blue);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--navy-blue);
+        }
+
+        /* ==========================================================================
+           4. HERO SECTION
+           ========================================================================== */
+        .hero {
+            padding: 10rem 0 6rem 0;
+            background-color: var(--bg-soft-gray);
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 540px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .hero-stat-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: var(--bg-soft-gray);
+            border-radius: 8px;
+        }
+
+        .hero-stat-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-icon {
+            width: 44px;
+            height: 44px;
+            background-color: rgba(0, 82, 204, 0.1);
+            color: var(--royal-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .stat-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .stat-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* ==========================================================================
+           5. SERVICES SECTION (4-COLUMN GRID)
+           ========================================================================== */
+        .services {
+            padding: 6rem 0;
+            background-color: var(--bg-white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.8rem;
+        }
+
+        .service-card {
+            background-color: var(--bg-soft-gray);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2.5rem 1.8rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            background-color: var(--bg-white);
+            border-color: var(--royal-blue);
+            box-shadow: 0 15px 30px rgba(0, 82, 204, 0.08);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--royal-blue);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .service-desc {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .service-link {
+            color: var(--royal-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .service-link:hover {
+            gap: 0.7rem;
+        }
+
+        /* ==========================================================================
+           6. TESTIMONIALS SECTION
+           ========================================================================== */
+        .testimonials {
+            padding: 6rem 0;
+            background-color: var(--bg-soft-gray);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+
+        .rating {
+            display: flex;
+            gap: 0.2rem;
+            color: #f59e0b;
+            margin-bottom: 1.2rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-dark);
+            font-size: 0.98rem;
+            margin-bottom: 2rem;
+        }
+
+        .client-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .client-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .client-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           7. FOOTNOTE CONTACT FORM & FOOTER
+           ========================================================================== */
+        .contact-footer-section {
+            padding: 6rem 0 3rem 0;
+            background-color: var(--navy-blue);
+            color: var(--bg-white);
+        }
+
+        .contact-footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            margin-bottom: 5rem;
+        }
+
+        .contact-info-col h2 {
+            font-size: 2.5rem;
+            color: var(--bg-white);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .contact-info-col p {
+            color: #94a3b8;
+            margin-bottom: 2.5rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-meta-icon {
+            width: 44px;
+            height: 44px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #38bdf8;
+            flex-shrink: 0;
+        }
+
+        .contact-meta-text span {
+            display: block;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .contact-meta-text strong {
+            font-size: 1rem;
+            color: var(--bg-white);
+        }
+
+        .dark-form {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 3rem;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .dark-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .dark-form-group label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+
+        .dark-form-control {
+            width: 100%;
+            padding: 0.85rem 1.2rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: var(--bg-white);
+            font-family: var(--font-main);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .dark-form-control:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+        }
+
+        textarea.dark-form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .footer-divider {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-copy {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--bg-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            background-color: var(--royal-blue);
+            transform: translateY(-3px);
+        }
+
+        /* ==========================================================================
+           8. RESPONSIVE BREAKPOINTS
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .contact-footer-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--bg-white);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                transition: var(--transition);
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .dark-form {
+                padding: 1.8rem;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .hero-content h1 {
+                font-size: 1.9rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / NAVBAR -->
+    <header class="header">
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0052cc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                    <polyline points="16 7 22 7 22 13"></polyline>
+                </svg>
+                NEXUS <span>DIGITAL</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#testimonials" class="nav-link">Case Studies</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li class="mobile-only-btn">
+                        <a href="#contact" class="btn btn-primary" style="margin-top: 1rem;">Book a Strategy Call</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <a href="#contact" class="btn btn-primary nav-cta">Book a Strategy Call</a>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle Navigation">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span class="section-subtitle">Data-Driven Growth Partners</span>
+                    <h1>We Scale Brands Through Data-Driven Marketing</h1>
+                    <p>Unlock predictable revenue streams with full-funnel digital marketing strategies built on rigorous analytics, creative excellence, and conversion science.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">
+                            Book a Strategy Call
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                        <a href="#services" class="btn btn-outline">Explore Services</a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-stat-card">
+                        <div class="stat-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                        </div>
+                        <div class="stat-info">
+                            <h4>+320% Average ROAS</h4>
+                            <p>For eCommerce and SaaS portfolio clients</p>
+                        </div>
+                    </div>
+
+                    <div class="hero-stat-card">
+                        <div class="stat-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <div class="stat-info">
+                            <h4>$45M+ Revenue Generated</h4>
+                            <p>Direct attribution across paid acquisition</p>
+                        </div>
+                    </div>
+
+                    <div class="hero-stat-card">
+                        <div class="stat-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <div class="stat-info">
+                            <h4>99.4% Client Retention</h4>
+                            <p>Long-term partnerships built on transparency</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION (4-COLUMN GRID) -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">What We Do</span>
+                <h2 class="section-title">Engineered For High Growth</h2>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </div>
+                    <h3 class="service-title">Search Engine Optimization</h3>
+                    <p class="service-desc">Dominate organic search results with technical audits, high-intent keyword positioning, and authoritative link acquisition.</p>
+                    <a href="#contact" class="service-link">
+                        Learn More 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <h3 class="service-title">Pay-Per-Click Ads</h3>
+                    <p class="service-desc">Maximize ad spend efficiency across Google, Meta, and LinkedIn with continuous creative testing and custom bidding algorithms.</p>
+                    <a href="#contact" class="service-link">
+                        Learn More 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </div>
+                    <h3 class="service-title">Social Media Scaling</h3>
+                    <p class="service-desc">Build viral brand presence and community engagement through high-performing short-form video and structured content funnels.</p>
+                    <a href="#contact" class="service-link">
+                        Learn More 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                    </div>
+                    <h3 class="service-title">Conversion Optimization</h3>
+                    <p class="service-desc">Turn more existing traffic into paying customers through rigorous UX auditing, heatmapping, and multivariate A/B testing.</p>
+                    <a href="#contact" class="service-link">
+                        Learn More 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Client Success Stories</span>
+                <h2 class="section-title">Trusted By Industry Leaders</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div>
+                        <div class="rating">
+                            ★★★★★
+                        </div>
+                        <p class="testimonial-text">"Nexus Digital completely transformed our acquisition funnel. Our monthly recurring revenue grew by 240% within just 5 months of partnership."</p>
+                    </div>
+                    <div class="client-profile">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop" alt="Sarah Jenkins" class="client-avatar">
+                        <div class="client-info">
+                            <h4>Sarah Jenkins</h4>
+                            <p>CMO, FinTech Solutions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div>
+                        <div class="rating">
+                            ★★★★★
+                        </div>
+                        <p class="testimonial-text">"Their data-first approach eliminated all the guesswork in our ad spend. We've never experienced such transparency and consistent ROAS."</p>
+                    </div>
+                    <div class="client-profile">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop" alt="Michael Chang" class="client-avatar">
+                        <div class="client-info">
+                            <h4>Michael Chang</h4>
+                            <p>Founder, Apex Apparel</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div>
+                        <div class="rating">
+                            ★★★★★
+                        </div>
+                        <p class="testimonial-text">"Absolute professionals. Their SEO and content framework put us on page one for all our core competitive keywords in record time."</p>
+                    </div>
+                    <div class="client-profile">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300&auto=format&fit=crop" alt="Amanda Sterling" class="client-avatar">
+                        <div class="client-info">
+                            <h4>Amanda Sterling</h4>
+                            <p>VP of Growth, CloudScale</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTNOTE CONTACT FORM & FOOTER -->
+    <section class="contact-footer-section" id="contact">
+        <div class="container">
+            <div class="contact-footer-grid">
+                <div class="contact-info-col">
+                    <span class="section-subtitle" style="color: #38bdf8;">Let's Talk Growth</span>
+                    <h2>Ready to Scale Your Brand?</h2>
+                    <p>Schedule a 30-minute discovery session with our senior growth strategists. We'll review your current funnel and outline a custom growth roadmap.</p>
+
+                    <div class="contact-meta-item">
+                        <div class="contact-meta-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </div>
+                        <div class="contact-meta-text">
+                            <span>Direct Email</span>
+                            <strong>growth@nexusdigital.com</strong>
+                        </div>
+                    </div>
+
+                    <div class="contact-meta-item">
+                        <div class="contact-meta-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <div class="contact-meta-text">
+                            <span>Phone Number</span>
+                            <strong>+1 (800) 555-NEXUS</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="dark-form" id="strategyForm">
+                    <div class="dark-form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="dark-form-control" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="dark-form-group">
+                        <label for="email">Business Email</label>
+                        <input type="email" id="email" class="dark-form-control" placeholder="john@company.com" required>
+                    </div>
+
+                    <div class="dark-form-group">
+                        <label for="website">Company Website URL</label>
+                        <input type="text" id="website" class="dark-form-control" placeholder="https://www.yourcompany.com" required>
+                    </div>
+
+                    <div class="dark-form-group">
+                        <label for="message">How can we help?</label>
+                        <textarea id="message" class="dark-form-control" placeholder="Tell us about your current challenges and goals..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; background-color: #38bdf8; color: #0a192f;">Schedule Strategy Call</button>
+                </form>
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom">
+                <p class="footer-copy">&copy; 2026 NEXUS DIGITAL Agency. All Rights Reserved.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-btn" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                    <a href="#" class="social-btn" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+                    <a href="#" class="social-btn" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hamburger Mobile Menu Toggle
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Strategy Form Handling
+            const strategyForm = document.getElementById('strategyForm');
+            strategyForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you! A senior growth strategist will review your website and contact you within 24 hours.');
+                strategyForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>
